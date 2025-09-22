@@ -1,25 +1,30 @@
-import css from './SearchBar.module.css';
+import css from "./SearchBar.module.css";
+import { useState } from "react";
 
-const SearchBar = () => {
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const input = form.elements.search;
-        }
+const SearchBar = ({ onSearch }) => {
+  const [query, setQuery] = useState("");
 
-    return (
-        <div className={css.searchBar}>
-            <form onSubmit={handleSubmit} >
-                <input
-                    type='text'
-                    name='search'
-                    autoComplete='off' 
-                />
-                {/* ref = { inputRef } */}
-            </form>
-        </div>
-    )
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (query.trim()) {
+      onSearch(query);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className={css.searchForm}>
+      <input
+        className={css.searchInput}
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        autoComplete="off"
+      />
+      <button type="submit" className={css.searchButton}>
+        Search
+      </button>
+    </form>
+  );
+};
 
 export default SearchBar;
-

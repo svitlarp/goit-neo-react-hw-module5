@@ -23,7 +23,6 @@ const MovieCast = () => {
       <ul className={css.credits}>
         {credits.map((credit) => (
           <li key={credit.id} className={css.creditItem}>
-            <img src={credit.profile_path} alt={credit.name} />
             <img
               src={`https://image.tmdb.org/t/p/w200${credit.profile_path}`}
               alt={credit.name}

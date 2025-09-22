@@ -58,3 +58,16 @@ export async function fetchMoviesCredits(id) {
     console.error(err);
   }
 }
+
+export async function fetchMoviesByQuery(query, page = 1) {
+  try {
+    const res = await axios.get(
+      `https://api.themoviedb.org/3/search/movie?query=${query}&page=${page}`,
+      options
+    );
+    console.log(res.data);
+    return res.data;
+  } catch (err) {
+    console.error(err);
+  }
+}

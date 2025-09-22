@@ -18,10 +18,19 @@ const MovieDetailsPage = () => {
     <div>
       <h4>MovieDetailsPage</h4>
       {movie && (
-        <>
-          <p>{movie.tagline}</p>
-          <p>{movie.id}</p>
-        </>
+        <div>
+          <div>
+            <img
+              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+              alt={movie.name}
+            />
+          </div>
+          <div>
+            <h3>{movie.title}</h3>
+            <h4>Overview:</h4>
+            <p>{movie.overview}</p>
+          </div>
+        </div>
       )}
 
       <ul>
