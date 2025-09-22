@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import MovieList from '../components/movie-list/MovieList';
 import {fetchMovies} from '../api/api.jsx';
 
-// const apiKey = import.meta.env.API_ACCSES_KEY;
 
 const HomePage = () => {
     const [trending, setTrending] = useState([]);
