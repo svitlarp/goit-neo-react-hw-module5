@@ -1,0 +1,22 @@
+.nav {
+    display: block;
+    padding: 20px 0 20px 20px;
+}
+
+.navLink {
+    color: black;
+    font-weight: 500;
+}
+
+.navLink:not(:last-child) {
+    margin-right: 20px;
+}
+
+.navActive {
+    font-weight: 500;
+    color: rgb(229, 76, 34);
+}
+
+.navActive:not(:last-child) {
+    margin-right: 20px;
+}
