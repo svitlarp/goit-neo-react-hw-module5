@@ -1,23 +1,13 @@
 import css from "./SearchBar.module.css";
-import { useState } from "react";
 
-const SearchBar = ({ onSearch }) => {
-  const [query, setQuery] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (query.trim()) {
-      onSearch(query);
-    }
-  };
-
+const SearchBar = ({ value, onSearch, onSubmit }) => {
   return (
-    <form onSubmit={handleSubmit} className={css.searchForm}>
+    <form onSubmit={onSubmit} className={css.searchForm}>
       <input
         className={css.searchInput}
         type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        value={value}
+        onChange={onSearch}
         autoComplete="off"
       />
       <button type="submit" className={css.searchButton}>
