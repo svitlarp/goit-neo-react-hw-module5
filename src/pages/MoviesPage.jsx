@@ -18,27 +18,30 @@ const MoviesPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("inputValue from onSubmit", inputValue);
 
-    const newSearch = new URLSearchParams();
-    newSearch.set("query", inputValue);
-    setParams(newSearch);
+    // const newSearch = new URLSearchParams();
+    // newSearch.set("query", inputValue);
+    // setParams(newSearch);
+
+    const trimmed = inputValue.trim();
+    if (!trimmed) return;
+    setParams({ query: trimmed });
   };
 
   useEffect(() => {
-    if (!query) return;
+    if (!query) {
+      setList([]);
+      return;
+    };
+
     setLoading(true);
+    setError(false);
 
     fetchMoviesByQuery(query)
-      .then((data) => {
-        setList(data.results);
-      })
-      // .catch((err) => console.log(err))
+      .then((data) => setList(data.results ?? []))
       .catch(() => setError(true))
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [inputValue]);
+      .finally(() => setLoading(false));
+  }, [query]);
 
   return (
     <>
